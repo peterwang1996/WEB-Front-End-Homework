@@ -7,7 +7,6 @@ window.onload=function(){
 	ifShow();
 }
 /*头部提示条*/
-
 var rightNotice=document.querySelector(".right-unnotice");
 var notice=document.querySelector("#u-notice");
 
