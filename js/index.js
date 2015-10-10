@@ -11,25 +11,27 @@ window.onload=function(){
 var rightNotice=document.querySelector(".right-unnotice");
 var notice=document.querySelector(".u-notice");
 
+
 rightNotice.onclick=function(){	
 
-	setCookie("isInfo","bu",date);
+	setCookie("isInfo","buzaitishi",date);
 	notice.style.display="none";
 }
 //检查cookie,顶部“不再提示”事件。
 
-if(getCookie("isInfo")){//检测是否出现通知栏
+/*if(getCookie("isInfo")){//检测是否出现通知栏
 
 		notice.style.display='none';
-	}
+	}*/
 //思考上下两个有什么区别？
-/*function ifShow(){	
-	if(getCookie("isInfo")){
 
+function ifShow(){
+	if(getCookie("isInfo")){
 		notice.style.display='none';
+		/*alert(123);*/
 	}
 }
-ifShow();*/
+ifShow();
 
 /*读取cookie*/
 function getCookie (Name) {
