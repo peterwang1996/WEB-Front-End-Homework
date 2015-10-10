@@ -2,14 +2,14 @@
 window.onload=function(){
 	date=new Date();
 	expiresDays=365;
-	date.setTime(date.getTime()+expiresDays*24*3600*1000)
+	date.setTime(date.getTime()+expiresDays*24*3600*1000);	
 
-	
+	ifShow();
 }
-
 /*头部提示条*/
+
 var rightNotice=document.querySelector(".right-unnotice");
-var notice=document.querySelector(".u-notice");
+var notice=document.querySelector("#u-notice");
 
 
 rightNotice.onclick=function(){	
@@ -26,12 +26,15 @@ rightNotice.onclick=function(){
 //思考上下两个有什么区别？
 
 function ifShow(){
-	if(getCookie("isInfo")){
-		notice.style.display='none';
+	var cookie=getCookie("isInfo");
+	if(cookie=="buzaitishi"){
+		document.getElementsByClassName('u-notice')[0].style.display='none';
+		/*notice.style.display='none';*/
 		/*alert(123);*/
+	}else{
+		document.getElementsByClassName('u-notice')[0].style.display='block';
 	}
 }
-ifShow();
 
 /*读取cookie*/
 function getCookie (Name) {
@@ -68,4 +71,5 @@ function setCookie(name,value,expires,path,domain,secure){
 function removeCookie(name,path,domain){
 	document.cookie=name+'='+';path='+path+';domain='+domain+';max-age=0';
 }
+
 
