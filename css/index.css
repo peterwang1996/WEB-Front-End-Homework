@@ -16,7 +16,7 @@ label,summary{cursor:default;}
 a,button{cursor:pointer;} 
 h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;} 
 del,ins,u,s,a,a:hover{text-decoration:none;} 
-body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,\5b8b\4f53;color:#333;outline:0;} 
+body,textarea,input,button,select,keygen,legend{color:#333;outline:0;font:12px/1.14 arial,\5b8b\4f53;} 
 body{background:#fff;margin: 0;} 
 a,a:hover{color:#333;} 
 .f-cb:after{content: '.';display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;}
@@ -62,4 +62,110 @@ a,a:hover{color:#333;}
 .right-unnotice span:hover{
 	color: green;
 	cursor: pointer;
+}
+/* 头部标题栏 */
+.m-topBar{
+	
+}
+.m-topBarContent{
+	height: 90px;
+	width: 1206px;
+	margin: 0 auto;
+	position: relative;
+	
+}
+.u-conLeft{
+	height:90px;
+	width: 800px;	
+	float: left;
+}
+.u-conLogo{
+	width: 240px;
+	height: 22px; 
+	background:url(../img/logo.png);
+	background-position:0 -7px;
+	position: absolute;
+	top: 34px;
+	left:1px;
+}
+.u-conLogo:hover{
+	background-position: 0 -49px;
+}
+
+.u-conAtten{
+	position: absolute;	
+	height: 19px;
+	left: 290px;
+	background: url(../img/icon.png) no-repeat;
+	background-position: 0 -110px;
+	border-radius: 4px;
+	width: 52px;
+	top: 35px;
+	cursor: pointer;
+}
+.u-conAtten:hover{
+	background: url(../img/icon.png) no-repeat;
+	background-position: 0 -382px;
+}
+.u-conAtten .userAtten{
+	position: absolute;
+	top: 3px;
+	left: 22px;
+}
+
+.u-conFans{
+	padding-left: 350px;
+	line-height: 90px;
+	font-size: 13px;
+}
+.m-conNav{
+	float:right;
+	
+}
+.m-conNav li{
+	display: inline-block;
+	line-height: 90px;
+	font-size: 16px;
+	padding-right: 40px;
+
+}
+.m-conNav li a:hover{
+	color: #21a557;
+}
+.m-conNav li:last-child{padding-right:60px;
+}
+.m-conSearch{
+	background: url(../img/icon.png);
+	position: absolute;
+	top: 35px;
+	right: 0;
+	width: 25px;
+	height: 22px;
+	padding-left: 10px;
+	background-position: 0 -46px;
+	float: right;
+
+}
+.m-conSearch:hover{
+	cursor: pointer;
+	background-position: 0 -75px;
+}
+.zoom{
+	position: absolute;
+	background: rgba(0,0,0,0.7);
+	z-index: 11;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	display: none;
+}
+.u-loginForm{
+	width: 390px;
+	height: 290px;
+}
+._topicForm{
+	font-size: 18px;
+	display: block;
+	height: 68px;
 }

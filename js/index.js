@@ -1,14 +1,11 @@
 /*页面加载*/
-window.onload=function(){
-	date=new Date();
-	expiresDays=365;
-	date.setTime(date.getTime()+expiresDays*24*3600*1000);	
+var date=new Date();
+var expiresDays=365;
+date.setTime(date.getTime()+expiresDays*24*3600*1000);	
 
-	ifShow();
-}
 /*头部提示条*/
-var rightNotice=document.querySelector(".right-unnotice");
-var notice=document.querySelector("#u-notice");
+var rightNotice=document.getElementsByClassName('right-unnotice')[0];
+var notice=document.getElementById("u-notice");
 
 
 rightNotice.onclick=function(){	
@@ -28,13 +25,11 @@ function ifShow(){
 	var cookie=getCookie("isInfo");
 	if(cookie=="buzaitishi"){
 		document.getElementsByClassName('u-notice')[0].style.display='none';
-		/*notice.style.display='none';*/
-		/*alert(123);*/
 	}else{
 		document.getElementsByClassName('u-notice')[0].style.display='block';
 	}
 }
-
+ifShow();
 /*读取cookie*/
 function getCookie (Name) {
 	var cookie={};
@@ -71,4 +66,12 @@ function removeCookie(name,path,domain){
 	document.cookie=name+'='+';path='+path+';domain='+domain+';max-age=0';
 }
 
+/*头部标题栏*/
+var _conAtten=document.getElementsByClassName("u-conAtten")[0];
 
+/*_conAtten.addEventListener("click",function(){
+	alert("hello");
+});*/
+addEvent(_conAtten,'click',function(){
+	alert("hello");
+});
