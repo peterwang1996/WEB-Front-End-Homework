@@ -69,9 +69,6 @@ function removeCookie(name,path,domain){
 /*头部标题栏*/
 var _conAtten=document.getElementsByClassName("u-conAtten")[0];
 
-/*_conAtten.addEventListener("click",function(){
-	alert("hello");
-});*/
-addEvent(_conAtten,'click',function(){
+_conAtten.addEventListener("click",function(){
 	alert("hello");
 });

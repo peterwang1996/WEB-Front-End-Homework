@@ -150,6 +150,7 @@ a,a:hover{color:#333;}
 	cursor: pointer;
 	background-position: 0 -75px;
 }
+/* 登录框 */
 .zoom{
 	position: absolute;
 	background: rgba(0,0,0,0.7);
@@ -158,14 +159,64 @@ a,a:hover{color:#333;}
 	width: 100%;
 	top: 0;
 	bottom: 0;
-	display: none;
+	display: none; 
 }
 .u-loginForm{
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -195px;
+	margin-top: -145px;
 	width: 390px;
 	height: 290px;
+	border: 1px #ccc solid;
+	background: #fff;
+	z-index: 100;
+	display: none;
 }
 ._topicForm{
-	font-size: 18px;
 	display: block;
-	height: 68px;
+	line-height: 68px;
+	padding-left: 40px;
+	font-family: "微软雅黑";
+	font-weight: 700;
+	font-size: 18px;
+}
+._nameForm{
+	  border: 1px  rgb( 223, 223, 223 ) solid;
+	  background-color:#fafafa;
+	  width: 293px;
+	  height: 43px;
+	  margin-left:40px;
+	  padding-left: 14px;
+	  box-shadow: 2px 2px 2px 2px  #f1f1f1 inset;
+ }
+ ._pswForm{
+ 		border: 1px  rgb( 223, 223, 223 ) solid;
+	  background-color:#fafafa;
+	  width: 293px;
+	  height: 43px;
+	  margin-left:40px;
+	  margin-top: 20px;
+	  padding-left: 14px;
+	  box-shadow: 2px 2px 2px 2px  #f1f1f1 inset;
+ }
+._loginForm{
+	display: block;
+	position: absolute;
+	width: 309px;
+	height: 46px;
+	background: url(../img/login.png) no-repeat;
+	background-position: 0 0 ;
+	border: 0;
+	margin-left: 40px;
+	margin-top: 20px;
+	cursor: pointer;
+	zoom: 1.04; 
+}
+._loginForm:hover{
+	background-position: 0 -60px;
+}
+._loginForm:active{
+	background-position: 0 -120px;
 }
