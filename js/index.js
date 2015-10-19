@@ -68,7 +68,17 @@ function removeCookie(name,path,domain){
 
 /*头部标题栏*/
 var _conAtten=document.getElementsByClassName("u-conAtten")[0];
+var _conAttened=document.getElementsByClassName("u-conAttened")[0];
+var _cancel=document.getElementsByClassName("cancel")[0];
+var _conFans=document.getElementsByClassName("u-conFans")[0];
 
 _conAtten.addEventListener("click",function(){
-	alert("hello");
+	_conAtten.style.display='none';
+	_conAttened.style.display='block';
+	_conFans.style.left="420px";
 });
+_cancel.addEventListener("click",function(){
+	_conAtten.style.display='block';
+	_conAttened.style.display='none';
+	_conFans.style.left="360px";
+})

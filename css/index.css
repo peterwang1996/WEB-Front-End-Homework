@@ -75,9 +75,9 @@ a,a:hover{color:#333;}
 	
 }
 .u-conLeft{
-	height:90px;
-	width: 800px;	
+	height:90px;	
 	float: left;
+	width: 800px;
 }
 .u-conLogo{
 	width: 240px;
@@ -101,7 +101,7 @@ a,a:hover{color:#333;}
 	border-radius: 4px;
 	width: 52px;
 	top: 35px;
-	cursor: pointer;
+	cursor: pointer; 
 }
 .u-conAtten:hover{
 	background: url(../img/icon.png) no-repeat;
@@ -112,11 +112,40 @@ a,a:hover{color:#333;}
 	top: 3px;
 	left: 22px;
 }
-
+.u-conAttened{	
+	height: 22px;
+	left: 290px;
+	background: url(../img/icon.png) no-repeat;
+	background-position: 0 -220px;
+	border-radius: 4px;
+	width: 150px;
+	top: 35px;
+	cursor: pointer;
+	display: none;
+	position: absolute; 
+}
+.u-conAttened:hover{
+	background-position: 0 -157px;
+}
+.u-conAttened .userAttened{
+	position: absolute;
+	top: 3px;
+	left: 27px;
+}
+.u-conAttened .cancel{
+	position: absolute;
+	top: 3px;
+	left: 85px;
+}
+.u-conAttened .cancel:hover{
+	color: green;
+	text-decoration: underline;
+}
 .u-conFans{
-	padding-left: 350px;
-	line-height: 90px;
+	line-height: 89px;
 	font-size: 13px;
+	left: 360px;
+	position: absolute;
 }
 .m-conNav{
 	float:right;
