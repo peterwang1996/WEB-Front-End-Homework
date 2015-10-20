@@ -35,7 +35,7 @@ function getCookie (Name) {
 	var cookie={};
 	var  all=document.cookie;
 	if(all==='')
-		return cookie;
+		return null;
 	var list=all.split(';');
 	for(var i=0;i<list.length;i++){
 		var item=list[i];
@@ -76,9 +76,32 @@ _conAtten.addEventListener("click",function(){
 	_conAtten.style.display='none';
 	_conAttened.style.display='block';
 	_conFans.style.left="420px";
+
+	checkLogin();
 });
+
 _cancel.addEventListener("click",function(){
 	_conAtten.style.display='block';
 	_conAttened.style.display='none';
 	_conFans.style.left="360px";
+});
+
+//检测是否登录
+function checkLogin(){
+	var cookie=getCookie("loginSuc");
+	if(!!cookie){
+		/*attention();*/
+		alert('111');
+	}else{
+		document.getElementsByClassName('u-loginForm')[0].style.display='block';
+		document.getElementsByClassName('zoom')[0].style.display='block';
+
+	}
+}
+
+//关闭登录框
+var _cancelBtn=document.getElementsByClassName("cancelBtn")[0];
+_cancelBtn.addEventListener("click",function(){
+	document.getElementsByClassName('u-loginForm')[0].style.display='none';
+		document.getElementsByClassName('zoom')[0].style.display='none';
 })

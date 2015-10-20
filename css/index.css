@@ -32,8 +32,8 @@ a,a:hover{color:#333;}
 	width: 1206px;
 	height: 36px;	
 	margin: 0px auto;
-	font-size: 12px;
 	line-height: 36px;
+	font-size: 13px;
 }
 .left-text{
 	float: left;
@@ -51,12 +51,15 @@ a,a:hover{color:#333;}
 	display: inline-block;
 	content: "";
 	background-image: url(../img/icon.png);
-	width: 16px;
-	height: 16px;
-	background-position: 0px 1px;
+	height: 18px;
+	width: 18px;
+	background-position: 0px 7px;
+}
+.right-unnotice span{
+	font-size: 15px;
 }
 .right-unnotice span:hover:before{
-	background-position: 0px -18px;
+	background-position: 0px -12px;
 }
 
 .right-unnotice span:hover{
@@ -91,7 +94,7 @@ a,a:hover{color:#333;}
 .u-conLogo:hover{
 	background-position: 0 -49px;
 }
-
+/* 关注登录 */
 .u-conAtten{
 	position: absolute;	
 	height: 19px;
@@ -248,4 +251,15 @@ a,a:hover{color:#333;}
 }
 ._loginForm:active{
 	background-position: 0 -120px;
+}
+.cancelBtn{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 20px;
+	height: 16px;
+	background: url(../img/icon.png);
+}
+.cancelBtn:hover{
+	background-position: 0 -19px;
 }
