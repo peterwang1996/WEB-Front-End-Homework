@@ -63,7 +63,7 @@ function setCookie(name,value,expires,path,domain,secure){
 }
 //删除cookie
 function removeCookie(name,path,domain){
-	document.cookie=name+'='+';path='+path+';domain='+domain+';max-age=0';
+	setCookie(name, '', new Date(0), path, domain);
 }
 
 /*头部标题栏*/
@@ -71,37 +71,73 @@ var _conAtten=document.getElementsByClassName("u-conAtten")[0];
 var _conAttened=document.getElementsByClassName("u-conAttened")[0];
 var _cancel=document.getElementsByClassName("cancel")[0];
 var _conFans=document.getElementsByClassName("u-conFans")[0];
+var _fanNum=document.getElementsByClassName("fanNum")[0];
+var _loginBtn=document.getElementsByClassName("_loginForm")[0];
+var _nameForm=document.getElementsByClassName("_nameForm")[0];
+var _pswForm=document.getElementsByClassName("_pswForm")[0];
+
 
 _conAtten.addEventListener("click",function(){
+	checkLogin();
+});
+_loginBtn.addEventListener("click",function(){
+	_conFans.style.left="420px";
+	document.getElementsByClassName('u-loginForm')[0].style.display='none';
+	document.getElementsByClassName('zoom')[0].style.display='none';
+	_fanNum.innerHTML=parseInt(_fanNum.innerHTML)+1;
 	_conAtten.style.display='none';
 	_conAttened.style.display='block';
-	_conFans.style.left="420px";
-
-	checkLogin();
 });
 
 _cancel.addEventListener("click",function(){
 	_conAtten.style.display='block';
 	_conAttened.style.display='none';
 	_conFans.style.left="360px";
+	_fanNum.innerHTML=parseInt(_fanNum.innerHTML)-1;
+	removeCookie("loginSuc");
 });
 
 //检测是否登录
 function checkLogin(){
 	var cookie=getCookie("loginSuc");
 	if(!!cookie){
-		/*attention();*/
-		alert('111');
+	_conAtten.style.display='none';
+	_conAttened.style.display='block';
+	_conFans.style.left="420px";
+	_fanNum.innerHTML=parseInt(_fanNum.innerHTML)+1;
 	}else{
 		document.getElementsByClassName('u-loginForm')[0].style.display='block';
 		document.getElementsByClassName('zoom')[0].style.display='block';
-
+		attention();
 	}
 }
 
 //关闭登录框
 var _cancelBtn=document.getElementsByClassName("cancelBtn")[0];
-_cancelBtn.addEventListener("click",function(){
+	_cancelBtn.addEventListener("click",function(){
 	document.getElementsByClassName('u-loginForm')[0].style.display='none';
-		document.getElementsByClassName('zoom')[0].style.display='none';
+	document.getElementsByClassName('zoom')[0].style.display='none';
 })
+//导航关注
+function attention(){
+	setCookie('loginSuc','yes');
+	var xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if (xhr.readyState==4&&xhr.status==200) {
+			if(xhr.responseText==1){
+				setCookie("followSuc","yes");
+			}
+		}
+	}
+
+	var url="http://study.163.com/webDev/login.htm";
+	xhr.open("get",url,true);
+	xhr.send(null);
+}
+//向先有URL的末尾添加查询字符串参数，
+function addURL (url,name,value) {
+	url+=(url.indexOf("?")==-1?"?":"&");
+	url+=encodeURIComponent(name)+"="+encodeURIComponent(value);
+    return url;
+}
+//轮播图片
