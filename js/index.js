@@ -141,3 +141,32 @@ function addURL (url,name,value) {
     return url;
 }
 //轮播图片
+function fadeIn(element){
+
+}
+
+var contBtn=document.getElementsByClassName("contBtn")[0];
+var aSpan=contBtn.getElementsByTagName('span');
+var aLi=document.getElementsByClassName("imgwrap")[0].getElementsByTagName('li');
+var aI=document.getElementsByClassName("contBtn")[0].getElementsByTagName('i');
+var now=0;
+for(var i=0;i<aSpan.length;i++){
+	aSpan[i].index=i;
+	aSpan[i].addEventListener("click",function(){
+		now=this.index;
+		tabBtn();
+		
+	})
+	/*aSpan[i].onclick=function(){
+		now=this.index;
+		tabBtn();
+	}*/
+}
+function tabBtn () {
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].className='hide';
+		aI[i].className='';
+	}
+	aLi[now].className='active';
+	aI[now].className='contBtnCol';
+}
