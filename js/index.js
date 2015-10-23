@@ -3,6 +3,24 @@ var date=new Date();
 var expiresDays=365;
 date.setTime(date.getTime()+expiresDays*24*3600*1000);	
 
+/**
+* 取得样式，包括非行间样式
+* @param  {Object} 节点
+* @param  {String} css名
+* @return {String} 返回样式结果
+*/
+function getStyle(obj, name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name];
+	}
+	else
+	{
+		return getComputedStyle(obj, false)[name];
+	}
+}
+
 /*头部提示条*/
 var rightNotice=document.getElementsByClassName('right-unnotice')[0];
 var notice=document.getElementById("u-notice");
@@ -141,32 +159,55 @@ function addURL (url,name,value) {
     return url;
 }
 //轮播图片
-function fadeIn(element){
 
-}
-
+window.onload=function(){
 var contBtn=document.getElementsByClassName("contBtn")[0];
 var aSpan=contBtn.getElementsByTagName('span');
-var aLi=document.getElementsByClassName("imgwrap")[0].getElementsByTagName('li');
+var aImg=document.getElementsByClassName("imgwrap")[0];
+var aLi=aImg.getElementsByTagName('li');
 var aI=document.getElementsByClassName("contBtn")[0].getElementsByTagName('i');
 var now=0;
-for(var i=0;i<aSpan.length;i++){
+var opa
+
+
+	for(var i=0;i<aSpan.length;i++){
 	aSpan[i].index=i;
-	aSpan[i].addEventListener("click",function(){
+
+	aSpan[i].onclick=function(){
 		now=this.index;
 		tabBtn();
-		
-	})
-	/*aSpan[i].onclick=function(){
-		now=this.index;
-		tabBtn();
-	}*/
+
+	}
+	
 }
 function tabBtn () {
+	
 	for(var i=0;i<aLi.length;i++){
+		var opa=aLi[now].style.opacity;
 		aLi[i].className='hide';
-		aI[i].className='';
-	}
+		aI[i].className='';			
+	}	
 	aLi[now].className='active';
-	aI[now].className='contBtnCol';
+	aI[now].className='contBtnCol';	
+	}
+}
+/*渐变代码*/
+function fadeChange(obj, iTarget)
+{
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function (){
+		var speed=(iTarget-obj.alpha)/6;
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		
+		if(obj.alpha==iTarget)
+		{
+			clearInterval(obj.timer);
+		}
+		else
+		{
+			obj.alpha+=speed;			
+			obj.style.filter='alpha(opacity:'+obj.alpha+')';
+			obj.style.opacity=obj.alpha/100;
+		}
+	}, 30);
 }

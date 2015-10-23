@@ -292,9 +292,10 @@ a,a:hover{color:#333;}
 	height: 10px;
 	margin-left: 11px;
 	border-radius: 5px;
-	background-color: #fff;
+	background-color: #ccc;
 	cursor: pointer;
 }
+
 .hide{display:none;
 }
 .active{
@@ -302,13 +303,77 @@ a,a:hover{color:#333;}
 }
 .contBtnCol{
 	display: inline-block;
-	width: 11px;
-	height: 11px;
-	border-radius: 5px;
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
 	background-color: #000;
 	cursor: pointer;
 }
 
-
-
-
+/* 内容导航栏 */
+.m-intro{
+	position: relative;
+	width: 1206px;
+	height: 300px;
+	margin: 0 auto;
+}
+.m-intro-f1{
+	width: 400px;
+	display: inline-block;
+}
+.m-intro-f2{
+	width: 400px;
+	display: inline-block;
+}
+.m-intro-f3{
+	width: 400px;
+	display: inline-block;
+}
+.m-intro-logo{
+	display: inline-block;
+	width: 82px;
+	height: 82px;
+	margin-top:67px;
+	margin-left: 5px;
+	background: url(../img/logo.png);
+	background-position: 0 -90px;
+	
+}
+.m-intro-topic{
+	position: relative;
+	left: 20px;
+	top: -70px;
+	display: inline-block; 
+	font-size: 22px;
+	font-family: "微软雅黑";
+	font-weight:400;
+}
+.m-intro-cont{
+	position: relative;
+	width: 240px;
+	height: 90px;
+	left: 110px;
+	top: -60px;
+	font-size: 14px;
+	line-height: 24px;
+	font-family: "微软雅黑";
+	color: #555;
+}
+.m-intro-more{
+	display: inline-block;
+	position: relative;
+	left: 110px;
+	top: -30px;
+	width: 240px;
+	font-size: 14px;
+	line-height: 24px;
+	font-family: "微软雅黑";
+	color: green;
+	cursor: pointer;
+}
+.m-intro-more a{
+	color: green
+}
+.m-intro-more:hover{
+	text-decoration: underline;
+}
