@@ -377,3 +377,14 @@ a,a:hover{color:#333;}
 .m-intro-more:hover{
 	text-decoration: underline;
 }
+/* 图片展示 */
+.u-showPic{
+	width:100%;
+}
+.u-showPic img{
+	float: left;
+	padding-left: 2px;
+	padding-right: 2px;
+	width: 20%;
+	box-sizing: border-box;
+}
