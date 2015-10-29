@@ -1,5 +1,4 @@
 /* reset */ 
-html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;} 
 header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;} 
 table{border-collapse:collapse;border-spacing:0;} 
 caption,th{text-align:left;font-weight:normal;} 
@@ -18,7 +17,6 @@ h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
 del,ins,u,s,a,a:hover{text-decoration:none;} 
 body,textarea,input,button,select,keygen,legend{color:#333;outline:0;font:12px/1.14 arial,\5b8b\4f53;} 
 body{background:#fff;margin: 0;} 
-a,a:hover{color:#333;} 
 .f-cb:after{content: '.';display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;}
 
 /* 不再提示样式 */
@@ -37,6 +35,7 @@ a,a:hover{color:#333;}
 }
 .left-text{
 	float: left;
+	width: 1000px;;
 }
 .left-text a{
 	color: green;
@@ -44,8 +43,7 @@ a,a:hover{color:#333;}
 .left-text a:hover{
 	text-decoration: underline;
 }
-.right-unnotice {
-	float:right;
+.right-unnotice {float:right;;
 }
 .right-unnotice span:before{
 	display: inline-block;
@@ -80,7 +78,9 @@ a,a:hover{color:#333;}
 .u-conLeft{
 	height:90px;	
 	float: left;
-	width: 800px;
+	width: 700px;
+	margin-top: 0;
+	padding: 0;
 }
 .u-conLogo{
 	width: 240px;
@@ -150,32 +150,38 @@ a,a:hover{color:#333;}
 	position: absolute;
 	left: 360px;
 }
+.u-conRight{
+	float: left;
+}
 .m-conNav{
-	float:right;
+	float:left;
+	padding-top:30px;;;
 	
 }
 .m-conNav li{
 	display: inline-block;
-	line-height: 90px;
 	font-size: 16px;
+	line-height: 70px;
 	padding-right: 40px;
 
 }
+.m-conNav li a{
+	color: #555;
+	font-weight: 600;
+}
 .m-conNav li a:hover{
-	color: #21a557;
+	color: green;
 }
 .m-conNav li:last-child{padding-right:60px;
 }
 .m-conSearch{
 	background: url(../img/icon.png);
-	position: absolute;
-	top: 35px;
-	right: 0;
+	margin-top: 42px;
 	width: 25px;
 	height: 22px;
 	padding-left: 10px;
-	background-position: 0 -46px;
 	float: right;
+	background-position: 0 -46px;
 
 }
 .m-conSearch:hover{
@@ -184,14 +190,14 @@ a,a:hover{color:#333;}
 }
 /* 登录框 */
 .zoom{
-	position: absolute;
 	background: rgba(0,0,0,0.7);
 	z-index: 11;
-	height: 100%;
 	width: 100%;
 	top: 0;
 	bottom: 0;
-	display: none; 
+	display: none;
+	position: absolute;
+	height: 100%; 
 }
 .u-loginForm{
 	position: fixed;
@@ -387,4 +393,97 @@ a,a:hover{color:#333;}
 	padding-right: 2px;
 	width: 20%;
 	box-sizing: border-box;
+}
+/* 产品列表 */
+.mainProduct{
+	background: #f8f8f8;
+	position: relative;	
+}
+.mainProductCont{
+	width: 1206px;
+	height: 2000px;
+	margin:0 auto;
+}
+.m-leftList{
+	position: relative;
+	top:84px;
+	width: 960px;
+}
+
+.u-Topbar ul,.u-Topbar li{display:inline-block;float:left;
+}
+
+.u-Topbar a{
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	font-size: 20px;
+	line-height: 50px;
+	font-family: "微软雅黑";
+	text-align: center;
+	box-shadow: 1px 1px  0px 1px #eee;
+	color: #000;
+}
+.u-Topbar{
+	height: 69px;
+}
+.u-Topbar .u-active-f1{
+	background:#39a030;
+	color: #fff;
+}
+.u-proIntro{
+	width: 225px;
+	height: 230px;
+	background: #fff;
+	float: right; 
+	margin-top: 26px;
+	border: 1px solid #eee;
+}
+.proIntroVideo div:nth-child(1){
+	height: 55px;
+	line-height: 55px;
+	border-bottom: 1px solid #dddddd;
+	font-size: 16px;
+	padding-left: 20px
+}
+.proIntroVideo div:nth-child(2){
+	height: 44px;
+	font-style: 14px;
+	padding-left: 20px;
+	line-height: 44px;
+	color: #666666;
+
+}
+.proIntroVideo-f1{
+	width: 180px;
+	height: 110px;
+	background: url(../img/videoImg.jpg) no-repeat;
+	margin-left: 20px;
+	cursor: pointer;
+}
+/* 视频播放器 */
+.m-player{
+	position: relative;
+}
+.u-bg{
+	background: rgb(0,0,0);
+	opacity: 0.7;
+	filter:alpha(opacity=70); 
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0; 
+	left: 0;
+	right: 0;
+	z-index: 99;
+	display: none;
+	/* display: none; */
+} 
+.m-playerBox{z-index:999;
+}
+.playerVideo{
+	width: 950px;
+	height: 675px;
+	
 }
