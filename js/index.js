@@ -211,6 +211,18 @@ function fadeChange(obj, iTarget)
 		}
 	}, 30);
 }
+
+/*视频开关代码*/
+var proIntroVideo=document.getElementsByClassName("proIntroVideo-f1")[0];
+var player=document.getElementsByClassName("m-player")[0];
+var playerBtn=document.getElementsByClassName("playerBtn")[0];
+proIntroVideo.addEventListener("click",function(){
+	player.style.display='block';
+});
+playerBtn.addEventListener("click",function(){
+	player.style.display='none';
+})
+
 //Ajax请求代码
 function ajax(url, fnSucc, fnFaild)
 {

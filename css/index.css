@@ -463,13 +463,12 @@ body{background:#fff;margin: 0;}
 }
 /* 视频播放器 */
 .m-player{
-	display: none;
 	width: 1000px;
 	height: 1000px;
 	position: fixed;
 	top: 0px;
 	left: 0px;
-
+	display: none;
 }
 .u-bg{
 	background: rgb(0,0,0);
@@ -507,6 +506,17 @@ body{background:#fff;margin: 0;}
 	width: 300px;
 	padding-top: 10px;
 	margin-left: 30px;
+}
+.playerBtn{
+	display: inline-block;
+	width: 15px;
+	height: 18px;
+	background:url(../img/icon.png) no-repeat;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top:10px;
+	z-index: 1000;
 }
 /*课程列表*/
 .u-courList{
