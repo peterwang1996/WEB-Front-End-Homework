@@ -161,13 +161,14 @@ function addURL (url,name,value) {
 //轮播图片
 
 window.onload=function(){
+
+loadCourse('1');
 var contBtn=document.getElementsByClassName("contBtn")[0];
 var aSpan=contBtn.getElementsByTagName('span');
 var aImg=document.getElementsByClassName("imgwrap")[0];
 var aLi=aImg.getElementsByTagName('li');
 var aI=document.getElementsByClassName("contBtn")[0].getElementsByTagName('i');
 var now=0;
-var opa
 
 
 	for(var i=0;i<aSpan.length;i++){
@@ -222,6 +223,36 @@ proIntroVideo.addEventListener("click",function(){
 playerBtn.addEventListener("click",function(){
 	player.style.display='none';
 })
+
+/*加载课程列表*/
+
+// 向现有URL的末尾添加查询字符串参数
+function addURLParam(url,name,value){
+    url+=(url.indexOf("?")==-1?"?":"&");
+    url+=encodeURIComponent(name)+"="+encodeURIComponent(value);
+    return url;
+}
+
+
+function loadCourse(pageNo){
+
+	var xhr=new XMLHttpRequest()||new ActiveXObject("Microsoft.XMLHTTP");
+	var url="http://study.163.com/webDev/couresByCategory.htm";
+	url=addURLParam(url,"pageNo",pageNo);
+	xhr.open("get",url,true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.send(null);
+	
+	xhr.onreadystatechange=function(){
+		if (xhr.readyState==4) {
+			if (xhr.status) {
+				alert(xhr.responseText);
+			}
+		}
+	}
+}
+
+
 
 //Ajax请求代码
 function ajax(url, fnSucc, fnFaild)
