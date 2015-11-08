@@ -13,10 +13,34 @@
 		list-style-type: none;
 		margin-left: 10px;
 		margin-top: 18px;
-		width: 450px;
-		height: 408px;
+		width: 225px;
+		height: 228px;
 		overflow: hidden;
+		
 	}
+	.okmy{
+		width: 223px;
+		height: 124px;
+	}
+	#okdklkd li p:nth-of-type(1){
+		padding-left: 4px;
+		font-size: 12px;
+		color: #000;
+		margin:0;
+	}
+	#okdklkd li p:nth-of-type(2){
+		padding-left: 4px;
+		font-size: 12px;
+		padding-top: 4px;
+		color: #666;
+		margin:0;
+	}
+	#okdklkd li p:nth-of-type(3){
+		margin:0;
+		font-size: 12px;
+		background: url();
+	}
+
 	#okdklkd li .okmyy{color: blue;}
 	</style>
 </head>
@@ -87,7 +111,7 @@ function ajax(obj) {
 	method : 'get',
 	url : 'http://study.163.com/webDev/couresByCategory.htm',
 	data : {
-		'pageNo':'2',
+		'pageNo':'1',
 		'psize':'12',
 		'type':'10'
 	},
@@ -105,19 +129,27 @@ function ajax(obj) {
 			var _name = document.createElement("p");
 			var _price = document.createElement("p");
 			var _description = document.createElement("p");
+			var _people=document.createElement("p");
+			var _provider=document.createElement("p");
 
-			_img.setAttribute("id", "okmy");
+			_img.setAttribute("class", "okmy");
 			_img.setAttribute("src", _data.list[i].bigPhotoUrl);
 
 			_name.setAttribute("class", "okmyy");
 			_name.innerHTML=_data.list[i].name;
 			_price.innerHTML="价格："+_data.list[i].price;
-			_description.innerHTML=_data.list[i].description;
+			/*_description.innerHTML=_data.list[i].description;*/
+			_people.innerHTML=_data.list[i].learnerCount;
+			_provider.innerHTML=_data.list[i].provider;
 
-			oLi.appendChild(_img);
+			oLi.appendChild(_img);			
 			oLi.appendChild(_name);
+			oLi.appendChild(_provider);			
+			oLi.appendChild(_people);
 			oLi.appendChild(_price);
-			oLi.appendChild(_description);
+			/*oLi.appendChild(_description);*/
+			
+
 		}
 	},
 	async : true

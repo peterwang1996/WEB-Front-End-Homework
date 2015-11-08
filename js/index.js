@@ -240,7 +240,7 @@ function loadCourse(pageNo){
 	var url="http://study.163.com/webDev/couresByCategory.htm";
 	url=addURLParam(url,"pageNo",pageNo);
 	xhr.open("get",url,true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	/*xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');*/
 	xhr.send(null);
 	
 	xhr.onreadystatechange=function(){
@@ -253,45 +253,161 @@ function loadCourse(pageNo){
 }
 
 
-
-//Ajax请求代码
-function ajax(url, fnSucc, fnFaild)
-{
-	//1.创建Ajax对象
-	if(window.XMLHttpRequest)
-	{
-		var oAjax=new XMLHttpRequest();
-	}
-	else
-	{
-		var oAjax=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	
-	//2.连接服务器（打开和服务器的连接）
-	oAjax.open('GET', url, true);
-	
-	
-	//3.发送
-	oAjax.send();
-	
-	//4.接收
-	oAjax.onreadystatechange=function ()
-	{
-		if(oAjax.readyState==4)
-		{
-			if(oAjax.status==200)
-			{
-				//alert('成功了：'+oAjax.responseText);
-				fnSucc(oAjax.responseText);
+/*列表课程*/
+//封装ajax
+function ajax(obj) {
+	var xhr = (function () {
+		if (typeof XMLHttpRequest != 'undefined') {
+			return new XMLHttpRequest();
+		} else if (typeof ActiveXObject != 'undefined') {
+			var version = [
+										'MSXML2.XMLHttp.6.0',
+										'MSXML2.XMLHttp.3.0',
+										'MSXML2.XMLHttp'
+			];
+			for (var i = 0; version.length; i ++) {
+				try {
+					return new ActiveXObject(version[i]);
+				} catch (e) {
+					//跳过
+				}	
 			}
-			else
-			{
-				//alert('失败了');
-				if(fnFaild)
-				{
-					fnFaild();
-				}
-			}
+		} else {
+			throw new Error('您的系统或浏览器不支持XHR对象！');
 		}
-	};
+	})();
+	obj.url = obj.url + '?rand=' + Math.random();
+	obj.data = (function (data) {
+		var arr = [];
+		for (var i in data) {
+			arr.push(encodeURIComponent(i) + '=' + encodeURIComponent(data[i]));
+		}
+		return arr.join('&');
+	})(obj.data);
+	if (obj.method === 'get') obj.url += obj.url.indexOf('?') == -1 ? '?' + obj.data : '&' + obj.data;
+	if (obj.async === true) {
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				callback();
+			}
+		};
+	}
+	xhr.open(obj.method, obj.url, obj.async);
+	if (obj.method === 'post') {
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send(obj.data);	
+	} else {
+		xhr.send(null);
+	}
+	if (obj.async === false) {
+		callback();
+	}
+	function callback() {
+		if (xhr.status == 200) {
+			obj.success(xhr.responseText);			//回调传递参数
+		} else {
+			alert('获取数据错误！错误代号：' + xhr.status + '，错误信息：' + xhr.statusText);
+		}	
+	}
+}
+		window.onload = function(){
+ ajax({
+	method : 'get',
+	url : 'http://study.163.com/webDev/couresByCategory.htm',
+	data : {
+		'pageNo':'1',
+		'psize':'20',
+		'type':'10'
+	},
+	success : function (data) {
+		console.log(data);
+		var _data= JSON.parse(data);
+
+		var oDiv = document.getElementById("okdklkd");
+
+		for(i=0;i<_data.list.length;i++){
+			var oLi = document.createElement("li");
+			oDiv.appendChild(oLi);
+
+			var _img = document.createElement("img");
+			var _name = document.createElement("p");
+			var _price = document.createElement("p");
+			var _description = document.createElement("p");
+			var _people=document.createElement("p");
+			var _provider=document.createElement("p");
+
+			_img.setAttribute("class", "okmy");
+			_img.setAttribute("src", _data.list[i].bigPhotoUrl);
+
+			_name.setAttribute("class", "okmyy");
+			_name.innerHTML=_data.list[i].name;
+			_price.innerHTML="￥"+_data.list[i].price;
+			_people.innerHTML=_data.list[i].learnerCount;
+			_provider.innerHTML=_data.list[i].provider;
+
+			oLi.appendChild(_img);			
+			oLi.appendChild(_name);
+			oLi.appendChild(_provider);			
+			oLi.appendChild(_people);
+			oLi.appendChild(_price);
+		}
+	},
+	async : true
+});
+ getHotlist();
+}
+/*热门课程*/
+
+function getHotlist(){
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+            if((xhr.status>=200&&xhr.status<300)||xhr.status==304){
+                var hotlist=JSON.parse(xhr.responseText),
+                listnum=0;
+                for(var i=0;i<10;i++){
+                    var topi=document.getElementsByClassName('topi')[i],
+                    detailtt=topi.getElementsByTagName('a')[0],
+                    tophot=topi.getElementsByTagName('span')[0],
+                    topimg=topi.getElementsByTagName('img')[0];
+                    detailtt.innerHTML=hotlist[i].name;
+                    detailtt.title=hotlist[i].name;
+                    tophot.innerHTML=hotlist[i].learnerCount;
+                    topimg.src=hotlist[i].smallPhotoUrl;
+                }
+                listnum=1;
+                var changehot=setInterval(function(){
+                    if(listnum==1){
+                        for(var i=0;i<10;i++){
+                            var topi=document.getElementsByClassName('topi')[i],
+                            detailtt=topi.getElementsByTagName('a')[0],
+                            tophot=topi.getElementsByTagName('span')[0],
+                            topimg=topi.getElementsByTagName('img')[0]
+                            xhri=i+10;
+                            detailtt.innerHTML=hotlist[xhri].name;
+                            detailtt.title=hotlist[xhri].name;
+                            tophot.innerHTML=hotlist[xhri].learnerCount;
+                            topimg.src=hotlist[xhri].smallPhotoUrl;
+                        }
+                        listnum--;
+                    }else if(listnum==0){
+                        for(var i=0;i<10;i++){
+                            var topi=document.getElementsByClassName('topi')[i],
+                            detailtt=topi.getElementsByTagName('a')[0],
+                            tophot=topi.getElementsByTagName('span')[0],
+                            topimg=topi.getElementsByTagName('img')[0]
+                            xhri=i;
+                            detailtt.innerHTML=hotlist[xhri].name;
+                            detailtt.title=hotlist[xhri].name;
+                            tophot.innerHTML=hotlist[xhri].learnerCount;
+                            topimg.src=hotlist[xhri].smallPhotoUrl;
+                        }
+                        listnum++;
+                    }
+                },5000);
+            }
+        }
+    }
+    xhr.open("get",'http://study.163.com/webDev/hotcouresByCategory.htm',true);
+    xhr.send(null);    
 }
