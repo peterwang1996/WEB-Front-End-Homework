@@ -160,9 +160,10 @@ function addURL (url,name,value) {
 }
 //轮播图片
 
-window.onload=function(){
 
-loadCourse('1');
+
+function imgTab(){
+	loadCourse('1');
 var contBtn=document.getElementsByClassName("contBtn")[0];
 var aSpan=contBtn.getElementsByTagName('span');
 var aImg=document.getElementsByClassName("imgwrap")[0];
@@ -177,14 +178,13 @@ var now=0;
 	aSpan[i].onclick=function(){
 		now=this.index;
 		tabBtn();
-
 	}
-	
 }
+
 function tabBtn () {
 	
 	for(var i=0;i<aLi.length;i++){
-		var opa=aLi[now].style.opacity;
+		
 		aLi[i].className='hide';
 		aI[i].className='';			
 	}	
@@ -311,6 +311,7 @@ function ajax(obj) {
 	}
 }
 		window.onload = function(){
+			imgTab();
  ajax({
 	method : 'get',
 	url : 'http://study.163.com/webDev/couresByCategory.htm',

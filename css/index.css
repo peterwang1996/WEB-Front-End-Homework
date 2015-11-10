@@ -15,9 +15,14 @@ label,summary{cursor:default;}
 a,button{cursor:pointer;} 
 h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;} 
 del,ins,u,s,a,a:hover{text-decoration:none;} 
-body,textarea,input,button,select,keygen,legend{color:#333;outline:0;font:12px/1.14 arial,\5b8b\4f53;} 
+body,textarea,input,button,select,keygen,legend{outline:0;font:12px/1.14 arial,\5b8b\4f53;color:#333;} 
 body{background:#fff;margin: 0;} 
 .f-cb:after{content: '.';display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;}
+/* 整体样式 */
+.g-mn{
+	width: 100%;
+	height: 2000px;
+}
 
 /* 不再提示样式 */
 .u-notice{
@@ -157,7 +162,7 @@ body{background:#fff;margin: 0;}
 }
 .m-conNav{
 	float:left;
-	padding-top:30px;;;
+	padding-top:5px;;;
 	
 }
 .m-conNav li{
@@ -673,5 +678,70 @@ body{background:#fff;margin: 0;}
 	width: 120px;
 	height: 20px;
 	padding-left: 20px;
+}
+/* 底部信息 */
+.footerBox{
+	width: 1206px;
+	height: 262px;
+	margin: 10px auto;	         
+}
+.g-ft{
+	background: #2c3339;
+	height: 262px;
+	width: 100%;
+	position: relative;
+	color: #ccc;
+}
+.footerBox-fl{
+	float: left;
+	
+}
+.ft-logo{
+	height: 26px;
+	background: url(../img/logo.png) no-repeat;
+	background-position: 0 -45px;
+	margin-top: 93px;
+}
+.ft-message{
+	font-size: 13px;
+	margin-top: 33px;
+}
+.footerBox-fr{
+	float: right;
+	margin-right: 250px;	
+	margin-top: 93px;
+}
 
+.link-nav ul{
+	float: left;
+	display:inline-block;
+	margin: 0;
+
+}
+.link-nav span{
+	font-size: 12px;
+	font-family: "微软雅黑";
+	margin-bottom: 15px;
+	line-height: 30px;
+}
+
+.link-nav li a{
+	font-size: 15px;
+	color: #ccc;
+	line-height: 30px;
+}
+.link-nav li a:hover{
+	text-decoration: underline;
+}
+
+.weiboLogo{
+	position: relative;
+	top: 3px;
+	right: -3px;
+	display:inline-block;
+	height: 20px;
+	width: 40px;	
+	background: url(../img/icon.png) no-repeat;
+	background-position: 0 -449px;
+	cursor: pointer;
 }
